@@ -1,13 +1,23 @@
 import s1 from "@/assets/swatch-1.jpg";
 import s2 from "@/assets/swatch-2.jpg";
 import s4 from "@/assets/swatch-4.jpg";
+import { Reveal } from "./Reveal";
 
 export function Customize() {
   return (
-    <section id="customize" className="bg-indigo text-indigo-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+    <section id="customize" className="relative overflow-hidden bg-indigo text-indigo-foreground">
+      <div
+        aria-hidden
+        className="animate-blob pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="animate-blob pointer-events-none absolute -bottom-40 -left-20 h-[28rem] w-[28rem] rounded-full bg-gold/15 blur-3xl"
+        style={{ animationDelay: "-7s" }}
+      />
+      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+          <Reveal as="div" className="lg:col-span-5">
             <span className="eyebrow text-gold">Customization tool</span>
             <h2 className="font-display mt-4 text-4xl font-bold sm:text-5xl">
               Build your aso òfì in four steps.
@@ -45,11 +55,11 @@ export function Customize() {
                 <path d="M3 8h10m0 0L8 3m5 5l-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-          </div>
+          </Reveal>
 
           {/* Mock customizer panel */}
-          <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-white/10 bg-background p-6 text-foreground shadow-2xl lg:p-8">
+          <Reveal as="div" delay={150} className="lg:col-span-7">
+            <div className="rounded-3xl border border-white/10 bg-background p-6 text-foreground shadow-2xl transition-transform duration-500 hover:-translate-y-1 lg:p-8">
               <div className="flex items-center justify-between">
                 <p className="eyebrow text-muted-foreground">Step 2 of 4</p>
                 <p className="text-xs font-medium text-muted-foreground">
@@ -79,7 +89,8 @@ export function Customize() {
                     ].map((c, i) => (
                       <button
                         key={i}
-                        className={`aspect-square rounded-xl ${c} ring-2 ring-transparent ring-offset-2 ring-offset-background transition-all hover:scale-105 ${i < 3 ? "ring-foreground/80" : ""}`}
+                        className={`aspect-square rounded-xl ${c} ring-2 ring-transparent ring-offset-2 ring-offset-background transition-all duration-300 hover:scale-110 ${i < 3 ? "ring-foreground/80" : ""}`}
+                        style={{ animationDelay: `${i * 60}ms` }}
                         aria-label={`Color ${i + 1}`}
                       />
                     ))}
@@ -105,7 +116,7 @@ export function Customize() {
                 </button>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -21,23 +21,37 @@ const steps = [
   },
 ];
 
+import { Reveal } from "./Reveal";
+
 export function HowItWorks() {
   return (
-    <section id="how" className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <div className="max-w-2xl">
+    <section
+      id="how"
+      className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32"
+    >
+      <Reveal className="max-w-2xl">
         <span className="eyebrow text-primary">How it works</span>
         <h2 className="font-display mt-4 text-4xl font-bold sm:text-5xl">
           From your screen to your shoulders.
         </h2>
-      </div>
+      </Reveal>
 
       <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
-        {steps.map((s) => (
-          <div key={s.n} className="bg-card p-8 transition-colors hover:bg-secondary">
-            <p className="font-display text-3xl font-semibold text-primary">{s.n}</p>
-            <h3 className="font-display mt-6 text-xl font-semibold">{s.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
-          </div>
+        {steps.map((s, i) => (
+          <Reveal key={s.n} delay={i * 100}>
+            <div className="group relative h-full overflow-hidden bg-card p-8 transition-colors duration-500 hover:bg-secondary">
+              <p className="font-display text-3xl font-semibold text-primary transition-transform duration-500 group-hover:-translate-y-1">
+                {s.n}
+              </p>
+              <h3 className="font-display mt-6 text-xl font-semibold">
+                {s.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {s.body}
+              </p>
+              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
+            </div>
+          </Reveal>
         ))}
       </div>
     </section>
