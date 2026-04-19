@@ -1,13 +1,23 @@
 import s1 from "@/assets/swatch-1.jpg";
 import s2 from "@/assets/swatch-2.jpg";
 import s4 from "@/assets/swatch-4.jpg";
+import { Reveal } from "./Reveal";
 
 export function Customize() {
   return (
-    <section id="customize" className="bg-indigo text-indigo-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+    <section id="customize" className="relative overflow-hidden bg-indigo text-indigo-foreground">
+      <div
+        aria-hidden
+        className="animate-blob pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="animate-blob pointer-events-none absolute -bottom-40 -left-20 h-[28rem] w-[28rem] rounded-full bg-gold/15 blur-3xl"
+        style={{ animationDelay: "-7s" }}
+      />
+      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+          <Reveal as="div" className="lg:col-span-5">
             <span className="eyebrow text-gold">Customization tool</span>
             <h2 className="font-display mt-4 text-4xl font-bold sm:text-5xl">
               Build your aso òfì in four steps.
