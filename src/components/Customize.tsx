@@ -55,11 +55,11 @@ export function Customize() {
                 <path d="M3 8h10m0 0L8 3m5 5l-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-          </div>
+          </Reveal>
 
           {/* Mock customizer panel */}
-          <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-white/10 bg-background p-6 text-foreground shadow-2xl lg:p-8">
+          <Reveal as="div" delay={150} className="lg:col-span-7">
+            <div className="rounded-3xl border border-white/10 bg-background p-6 text-foreground shadow-2xl transition-transform duration-500 hover:-translate-y-1 lg:p-8">
               <div className="flex items-center justify-between">
                 <p className="eyebrow text-muted-foreground">Step 2 of 4</p>
                 <p className="text-xs font-medium text-muted-foreground">
@@ -89,7 +89,8 @@ export function Customize() {
                     ].map((c, i) => (
                       <button
                         key={i}
-                        className={`aspect-square rounded-xl ${c} ring-2 ring-transparent ring-offset-2 ring-offset-background transition-all hover:scale-105 ${i < 3 ? "ring-foreground/80" : ""}`}
+                        className={`aspect-square rounded-xl ${c} ring-2 ring-transparent ring-offset-2 ring-offset-background transition-all duration-300 hover:scale-110 ${i < 3 ? "ring-foreground/80" : ""}`}
+                        style={{ animationDelay: `${i * 60}ms` }}
                         aria-label={`Color ${i + 1}`}
                       />
                     ))}
@@ -115,7 +116,7 @@ export function Customize() {
                 </button>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
